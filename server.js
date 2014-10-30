@@ -1,20 +1,20 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var database = require('./liarDataBase');
 var Sequelize = require('sequelize');
 
 var app = express();
 
-app.use (bodyParser.json());
+app.use(express.static(__dirname + '/public'))
+app.use(bodyParser.json());
 
-//Connection
+//Connection <-- this is whast makes SQL and Node talk to eachother. 
 var connection = new Sequelize('calcWatches', 'root', 'August13', 
 	{
 		host: 'localhost'
 	}
 );
 
-//Model
+//Model <-- 
 var Watch = connection.define('watch', 
 	{
 		color: Sequelize.STRING,
